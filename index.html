@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7e0;
+            color: #2e7d32;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #fact-display {
+            font-size: 1.5em;
+            margin: 20px 0;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .images {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .croc-image {
+            width: 100px;
+            height: auto;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .croc-image:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <p id="fact-display">Click the button to see a random fact!</p>
+        <button id="fact-button">Show Random Fact</button>
+        <button id="twitter-share" onclick="shareOnTwitter()">Share on Twitter</button>
+        <div class="images">
+            <img src="crocodile1.jpg" alt="Crocodile" class="croc-image">
+            <img src="crocodile2.jpg" alt="Crocodile" class="croc-image">
+        </div>
+    </div>
+    <script>
+        const facts = [
+            "Crocodiles are ancient reptiles: They have been around for over 200 million years, making them one of the oldest living species on Earth.",
+            "Crocodiles can hold their breath: They can stay underwater for up to an hour without coming up for air, thanks to their ability to slow their heart rate.",
+            "They have a powerful bite: A crocodile's bite can exert a force of over 3,000 pounds per square inch, making it one of the strongest bites in the animal kingdom.",
+            "Crocodiles are cold-blooded: They rely on external temperatures to regulate their body heat, which is why they are often seen basking in the sun.",
+            "They have excellent night vision: Crocodiles can see well in low light conditions, which helps them hunt at night.",
+            "Crocodiles can swim fast: They can swim at speeds of up to 20 miles per hour in short bursts, using their powerful tails.",
+            "They are territorial: Male crocodiles are known to be very territorial and will defend their territory aggressively against intruders.",
+            "Crocodiles communicate: They use a variety of vocalizations, including hissing, growling, and even bellowing, to communicate with each other.",
+            "They have a unique way of eating: Crocodiles often perform a 'death roll' to subdue their prey, spinning rapidly to tear off chunks of flesh.",
+            "Crocodiles can live a long time: They can live for 70 to 100 years in the wild, with some individuals even reaching over 100 years of age.",
+            "They have a special valve in their throat: This valve allows them to open their mouths underwater without drowning.",
+            "Crocodiles are social animals: They often bask in groups and can be seen interacting with one another.",
+            "They have a keen sense of smell: Crocodiles can detect scents in the water from miles away, which helps them locate prey.",
+            "Crocodiles are protective parents: Female crocodiles will guard their nests and help their hatchlings reach the water after they are born.",
+            "There are many species of crocodiles: There are 15 recognized species of crocodiles, each adapted to different environments around the world."
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex];
+                factDisplay.style.opacity = 1; // Fade in
+            }, 500);
+        });
+
+        function shareOnTwitter() {
+            const fact = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
